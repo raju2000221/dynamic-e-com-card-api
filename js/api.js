@@ -9,7 +9,16 @@ const displayPhone = phones =>{
         const phoneContainer = document.getElementById('phone_container');
         phoneContainer.innerHTML ='';
         // show limited phone like 20 phone display on per page
-        phones = phones.slice(0,20);
+        const showall =document.getElementById('showall')
+        if(phones.length>15){
+            phones = phones.slice(0,20);
+            
+            showall.classList.remove('d-none')
+        }
+        else{
+            showall.classList.add('d-none')
+        }
+        
         // display No phone Found
         const noPhone = document.getElementById('no-phone')
         if(phones.length === 0){
@@ -29,6 +38,7 @@ const displayPhone = phones =>{
                 <div class="card-body">
                 <h5 class="card-title">${phone.phone_name}</h5>
                 <p class="card-text"> Brand: ${phone.brand}</p>
+                <button onclick="loadPhonreDetails('${phone.slug}')"href ="" class ="btn btn-primary"> Details </button>
                 </div>
                 </div>
             `;
@@ -45,6 +55,12 @@ const searchText = text =>{
     loadPhones(searchfield)
 }
 
+document.getElementById('search-field').addEventListener('keypress',function(e){
+    if(e.key === 'Enter'){
+    const searchfield =document.getElementById('search-field').value
+    loadPhones(searchfield)
+    }
+})
 // loader // spinner
 
 const toggleSpinner = isLoading =>{
@@ -55,6 +71,13 @@ const toggleSpinner = isLoading =>{
     else{
         loaderSection.classList.add('d-none')
     }
+}
+const loadPhonreDetails = async id =>{
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+
 }
 
 loadPhones('apple')

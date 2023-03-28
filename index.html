@@ -6,7 +6,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="container">
     <h1>Welcome to phone Hunter</h1>
     <main>
       <section style="height: 120px;" class="d-flex align-items-center justify-content-center">
@@ -19,11 +19,16 @@
         </div>
     </section>
         <section>
-            <div id="phone_container" class="row row-cols-1 row-cols-md-5 g-4 p-4">
+            <div id="phone_container" class="row row-cols-1 row-cols-md-4 g-4 p-4">
             
                 </div>
                 <div id="no-phone" class="d-flex align-items-center justify-content-center mt-50 d-none">
                   <h3 class="text-warning">No phone found</h3>
+                </div>
+                <div id="showall" class="d-none">
+                  <div id="btnShowAll" class="btn btn-primary ">
+                    show all
+                  </div>
                 </div>
         </section>
         <section id="loader" class="d-none">
